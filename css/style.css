@@ -1,0 +1,436 @@
+@charset "utf-8";
+html{
+    font-size:62.5%; /* 16px × 62.5% = 10px */   
+}
+
+html, body{
+    height: 100%;
+}
+
+.title img{
+    width: 50vw;
+    z-index: 999;
+    display: block;
+    margin: 0 auto;
+}
+
+.title{
+    background-color: #2d83f6;
+}
+
+body{
+    margin:0;
+    font-size: 18px;
+    background: #0d4379;
+    color:#000;
+    font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+}
+
+
+.wrapper{
+    height: 100%;
+    background-color: #f6f5f0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+input{
+    padding:10px 15px;
+    border-radius:10px;
+    transition:.3s ease;
+    color:#868283;
+}
+
+::placeholder{
+    color: #cccccc;
+}
+
+.form-area{
+    text-align: left;
+    padding: 10%;
+}
+
+.name-area-text p{
+    font-weight: bold;
+}
+
+
+
+.sample-balloon {
+    position: relative;
+    display: inline-block;
+    background: #fae02a;
+    border-radius: 20px;
+    padding: 20px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .sample-balloon::before {
+    content: "";
+    /* borderで三角形を作る */
+    border-width: 10px;
+    border-style: solid;
+    border-color: #fae02a transparent transparent transparent;
+    /* 配置する */
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translateX(-50%);
+    text-align-last: left;
+  }
+
+
+
+/* h1{
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    font-size: 3vw;
+} */
+
+.summary{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.inoue{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.inoue-icon img{
+    width: 150px;
+    margin-right: 30px;
+}
+
+
+
+.btn-submit{
+        appearance: none;
+        -webkit-appearance:none;
+        -moz-appearance: none ;
+        box-sizing: border-box;
+        display: block;
+        height: 70px; 
+        width: 300px;
+        padding: 10px 20px; 
+        font-size: 2rem;
+        border-radius: 5px;
+        margin: auto;
+        margin-bottom: 100px;
+        
+        border:none;
+        cursor: pointer;
+        text-align: center;
+        position: relative;
+        background-color: #2d83f6;
+        color:white;
+    
+    }
+    
+    .button a{
+        font-weight: bold;
+        text-decoration-line: none;
+        width:200px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        -webkit- transform: translateY(-50%) translateX(-50%);
+    }
+    
+
+
+/*========= ローディング画面のためのCSS ===============*/
+#splash {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #aad8de;
+	z-index: 9999999;
+	text-align:center;
+	color:#000;
+}
+
+#splash-logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*========= 画面遷移のためのCSS ===============*/
+
+/*画面遷移アニメーション*/
+
+body{
+    background:#fae02a;/*遷移アニメーションと同じ色を指定*/
+}
+
+body.appear{
+    background:#fae02a;/*画面を開いた後の背景色を指定*/
+}
+
+.splashbg{
+    display: none;
+	content: "";
+	position:fixed;
+	transform: scale(100);
+	background-color: #aad8de;/*伸びる背景色の設定*/
+	z-index: 999;
+    /*丸のスタートの形状*/
+    top:calc(50% - 1rem);/*50%から円の半径を引いた値*/
+    left:calc(50% - 1rem);/*50%から円の半径を引いた値*/
+	width: 2rem;
+	height: 2rem;
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear .splashbg{
+    display: block;
+    border-radius: 50%;	
+	animation-name:PageAnime;
+	animation-duration:1s;
+	animation-fill-mode:forwards;
+}
+
+@keyframes PageAnime{
+	0% {/*丸のスタート位置と形状*/
+		transform: scale(100);
+	
+	}
+	100% {/*丸の終了位置と形状*/
+		transform: scale(0);
+		display: none;/*終了時は消える*/
+	}
+}
+
+/*画面遷移の後現れるコンテンツ設定*/
+#container{
+	opacity: 0;/*はじめは透過0に*/
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear #container{
+	animation-name:PageAnimeAppear;
+	animation-duration:1s;
+	animation-delay: 0.8s;
+	animation-fill-mode:forwards;
+	opacity: 0;
+}
+
+@keyframes PageAnimeAppear{
+	0% {
+	opacity: 0;
+	}
+	100% {
+	opacity: 1;
+}
+}
+
+@media screen and (min-width: 641px) {
+    .sp{
+        display: none;
+    }    
+  }
+
+@media screen and (max-width: 640px){
+    /* ----------------------
+    ページ共通
+     ---------------------- */
+     html{
+        background-color: #fff;
+     }
+
+     body{
+        margin:0;
+        font-size: 18px;
+        background: #fff;}
+     
+     .title img{
+        width: 350px;
+     }
+     .title{
+        background-color: #2d83f6;
+        width: 100%;
+        position:fixed;
+        top: 0;
+        z-index: 1000;
+     }
+
+     @media screen and (min-width: 640px){
+
+        .wrapper{
+            max-width : 400px;
+            margin:0 auto;
+            padding: 100px;
+        }
+    
+        .modal-wrapper{
+            max-width : 400px;
+            margin:0 auto;
+        }
+    
+        }
+
+
+
+     p{
+        font-size: 1.4rem;
+        margin: 0 0 10px 0;
+     }
+
+     .sample-balloon{
+        padding: 10px;
+     }
+
+    /* ----------------------
+    index.html
+     ---------------------- */
+
+     .wrapper{
+        width: 100%;
+
+     }
+
+     .button-area{
+        display: block;
+        margin-bottom: 40px;
+    }
+
+    .button{
+        margin-bottom: 20px;
+    }
+
+    .pc{
+        display: none;
+    }
+
+    .inoue-icon img{
+        width: 70px;
+        margin-right: 15px;
+    }
+
+    .inoue{
+        padding-top: 90px;
+     }
+
+        /* ----------------------
+    gacha.html
+     ---------------------- */
+
+     .result-text{
+        padding-top: 90px;
+     }
+
+     .backpack-wrapper{
+        margin:10px 10px 40px;
+     }
+
+     .backpack-wrapper h2{
+        font-size: 1.8rem;
+     }
+     #user-name-display{
+        margin-bottom: 20px;
+     }
+     #item-list{
+        margin-bottom: 20px;
+     }
+
+     .okashi-item{
+        background-color: #fff;
+        border: 1px;
+        width:120px;
+        border-radius: 20px;
+        margin: 8px;
+        padding: 5px;
+    }
+    .okashi-item img{
+        height: 60px;
+    }
+    
+    .okashi-item h3{
+        font-size: 1.2rem;
+        margin:0 0 10px;
+    }
+    
+    .okashi-item p{
+        margin-top:0px;
+        font-size: 1rem;
+    }
+    
+    body.appear{
+        background:#fff;/*画面を開いた後の背景色を指定*/
+    }
+
+    #splash-logo img{
+        width: 300px;
+    }
+
+
+    }
+
+
+    .form-wrapper{
+        margin:auto;
+        width:640px;
+    }
+
+    .form-inner{
+        display: flex;
+        flex-wrap:wrap;
+        margin: 0 0 30px;
+    }
+
+    .form-inner{
+        display: flex;
+        flex-wrap:wrap;
+        margin: 0 0 30px;
+    }
+    
+    .form-title{
+        font-size: 1.6rem;
+        width:240px;
+        padding: 16px 64px 0 16px ;
+        text-align-last: left;
+        box-sizing: border-box;
+        border-width: 1px;
+    }
+
+
+.form-parts{
+    appearance: none;
+    -webkit-appearance:none;
+    -moz-appearance: none ;
+    box-sizing: border-box;
+    width: 312px;
+    height: 36px;
+    margin:8px 0 8px 8px;
+    padding: 8px;
+    font-size: 1.6rem;
+    border: none;
+
+}
+
+::placeholder{
+    color:#c9c9c9;
+}
+
+
+.td{
+    box-sizing: border-box;
+}
+
+
+.form-item{
+    vertical-align:middle;
+}
